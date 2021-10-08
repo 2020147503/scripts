@@ -2,13 +2,19 @@ name: linux
 
 on: 
   push:
+    paths:
+      - linux
 
 jobs:
   build:
     runs-on: ubuntu-20.04
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+    
     
     - name: Download and Unzip
       shell: bash
