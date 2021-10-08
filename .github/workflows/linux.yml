@@ -2,7 +2,8 @@ name: linux
 
 on: 
   push:
-    paths: linux/**
+    paths: 
+      - linux/**
 
 jobs:
   build:
