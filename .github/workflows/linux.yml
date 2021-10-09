@@ -1,7 +1,7 @@
 name: linux
 
 env:
-  LINUX_SHA: "`cat linux/.git/refs/heads/csi2115-f21`"
+  LINUX_SHA: ${{ `cat linux/.git/refs/heads/csi2115-f21` }}
   
 on: 
   push:
