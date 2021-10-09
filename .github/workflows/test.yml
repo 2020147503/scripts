@@ -1,0 +1,22 @@
+name: test
+
+on:
+  push:
+    paths: test/**
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Check out
+      uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      shell: bash
+      run: ./install-deps.sh
+      
+    - name: Make
+      shell: bash
+      run: make -C test
