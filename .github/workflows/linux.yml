@@ -1,5 +1,8 @@
 name: linux
 
+env:
+  LINUX_SHA: "`cat linux/.git/refs/heads/csi2115-f21`"
+  
 on: 
   push:
     paths:
@@ -19,16 +22,16 @@ jobs:
     - name: Download and Unzip
       shell: bash
       run: |
-        wget https://github.com/2020147503/linux/archive/$GITHUB_SHA.zip
-        unzip $GITHUB_SHA.zip
+        wget https://github.com/2020147503/linux/archive/$LINUX_SHA.zip
+        unzip $LINUX_SHA.zip
     
     - name: Build Linux
       shell: bash
       run: |
-        ./build-linux.sh linux-$GITHUB_SHA tinyconfig
+        ./build-linux.sh linux-$LINUX_SHA tinyconfig
         
     - name: Remove downloaded files
       shell: bash
       run: |
-        rm -rf $GITHUB_SHA.zip
-        rm -rf linux-$GITHUB_SHA
+        rm -rf $LINUX_SHA.zip
+        rm -rf linux-$LINUX_SHA
