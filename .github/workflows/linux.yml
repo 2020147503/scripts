@@ -1,7 +1,7 @@
 name: linux
 
 env:
-  LINUX_REF: linux/.git/refs/heads/csi2115-f21
+  LINUX_REF: "git submodule | grep linux | awk '{ print $1}'"
   
 on: 
   push:
@@ -22,16 +22,16 @@ jobs:
     - name: Download and Unzip
       shell: bash
       run: |
-        wget https://github.com/2020147503/linux/archive/`cat $LINUX_REF`.zip
-        unzip `cat $LINUX_REF`.zip
+        wget https://github.com/2020147503/linux/archive/`$LINUX_REF`.zip
+        unzip `$LINUX_REF`.zip
     
     - name: Build Linux
       shell: bash
       run: |
-        ./build-linux.sh linux-`cat $LINUX_REF` tinyconfig
+        ./build-linux.sh linux-`$LINUX_REF` tinyconfig
         
     - name: Remove downloaded files
       shell: bash
       run: |
-        rm -rf `cat $LINUX_REF`.zip
-        rm -rf linux-`cat $LINUX_REF`
+        rm -rf `$LINUX_REF`.zip
+        rm -rf linux-`$LINUX_REF`
