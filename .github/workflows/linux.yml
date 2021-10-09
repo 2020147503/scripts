@@ -19,7 +19,7 @@ jobs:
     - name: Download and Unzip
       shell: bash
       run: |
-        wget https://github.com/2020147503/linux/archive/ref/heads/csi2115-f21.zip
+        wget https://github.com/2020147503/linux/archive/refs/heads/csi2115-f21.zip
         unzip csi2115-f21.zip
     
     - name: Build Linux
