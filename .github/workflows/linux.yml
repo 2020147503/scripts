@@ -2,8 +2,8 @@ name: linux
   
 on: 
   push:
-#     paths:
-#       - linux
+    paths:
+      - linux
 
 jobs:
   build:
@@ -14,7 +14,11 @@ jobs:
       uses: actions/checkout@v2
       with:
         submodules: true
-    
+
+    - name: Install Dependencies
+      shell: bash
+      run: |
+        ./install-deps.sh
     
     - name: Download and Unzip
       shell: bash
@@ -26,9 +30,3 @@ jobs:
       shell: bash
       run: |
         ./build-linux.sh linux-csi2115-f21 tinyconfig
-        
-    - name: Remove downloaded files
-      shell: bash
-      run: |
-        rm -rf csi2115-f21.zip
-        rm -rf linux-csi2115-f21
